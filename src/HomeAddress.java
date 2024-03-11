@@ -1,21 +1,19 @@
 public class HomeAddress implements Address {
-    @Override
-    public String mahalle(String mahalle) {
-        return null;
+    private String mahalle;
+    private String sokak;
+    private String apartman;
+    private String daire;
+
+    public HomeAddress(String mahalle, String sokak, String apartman, String daire) {
+        this.mahalle = mahalle;
+        this.sokak = sokak;
+        this.apartman = apartman;
+        this.daire = daire;
     }
 
+    // Adres bilgisini döndüren metot
     @Override
-    public String sokak(String sokak) {
-        return null;
-    }
-
-    @Override
-    public String apartman(String apartman) {
-        return null;
-    }
-
-    @Override
-    public String daire(String daire) {
-        return null;
+    public String getAddressInfo() {
+        return mahalle + " Mahallesi, " + sokak + " Sokak, " + apartman + " Apartmanı, Daire: " + daire;
     }
 }
