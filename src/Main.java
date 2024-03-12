@@ -7,14 +7,11 @@ public class Main {
         ArrayList<HomeAddress> homeAddressArrayList = new ArrayList<>();
         ArrayList<BusinessAddress> businessAddressArrayList = new ArrayList<>();
 
-        User user = new User("Ahmet","Avcı","ahmeta@mail.com","ahmet123","Serbest",23,addressArrayList,homeAddressArrayList,businessAddressArrayList,new Date());
-        AddressManager addressManager = new AddressManager(addressArrayList,homeAddressArrayList,businessAddressArrayList);
-
-        Panel panel = new Panel();
+        User user = new User("Ahmet", "Avcı", "ahmeta@mail.com", "ahmet123", "Serbest", 23, addressArrayList, homeAddressArrayList, businessAddressArrayList, new Date());
+        AddressManager addressManager = new AddressManager();
+        AccountManager accountManager = new AccountManager();
+        accountManager.addUser(user.getEmail(), user.getSifre()); // Kullanıcıyı ekleyin
+        Panel panel = new Panel(addressManager, accountManager, user);
         panel.start();
-
-
-
-
     }
 }

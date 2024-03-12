@@ -1,17 +1,13 @@
 import java.util.ArrayList;
-import java.util.Date;
 enum AuthenticationStatus {
     SUCCESS, // Başarılı giriş
     FAIL     // Başarısız giriş
 }
-
-
 public abstract class Account {
     private AuthenticationStatus authenticationStatus;
     private User user;
     private ArrayList<String> insuranceList;
     private ArrayList<Address> addressArrayList;
-
 
     public Account(AuthenticationStatus authenticationStatus, User user, ArrayList<String> insuranceList, ArrayList<Address> addressArrayList) {
         this.authenticationStatus = authenticationStatus;
@@ -20,17 +16,12 @@ public abstract class Account {
         this.addressArrayList = addressArrayList;
     }
 
-    public Account(AuthenticationStatus authenticationStatus, User user, ArrayList<String> insuranceList) {
-        this.authenticationStatus = authenticationStatus;
-        this.user = user;
-        this.insuranceList = insuranceList;
-    }
-
-    //Kullanıcının login olma durumunu döndüren fonksiyon
+    // Kullanıcının login olma durumunu döndüren fonksiyon
     public AuthenticationStatus getAuthenticationStatus() {
         return authenticationStatus;
     }
-    public void setAuthenticationStatus(AuthenticationStatus authenticationStatus){
+
+    public void setAuthenticationStatus(AuthenticationStatus authenticationStatus) {
         this.authenticationStatus = authenticationStatus;
     }
 
@@ -50,33 +41,25 @@ public abstract class Account {
         this.insuranceList = insuranceList;
     }
 
-    public void loginFunction(String email,String sifre){
-      /*
-       Bu fonksiyon email ve şifre bilgisi alacak
-       ve gelen email şifre bilgisini
-       User sınıfındaki email ve şifre ile kıyaslayacaktır.
-       Eğer girilen bilgiler doğruysa giriş işlemi başarılı olacaktır.
-       Ve kullanıcının login olma durumu SUCCESS'e çekilecektir.
-       Giriş işlemi başarısız ise
-       "InvalidAuthenticationException" tipinde bir hata fırlatacaktır.
-       Bu hata sınıfını Exception isimli Java sınıfından kalıtım alarak
-       sizin yazmanız gerekecektir.
-       */
+    public ArrayList<Address> getAddressArrayList() {
+        return addressArrayList;
     }
 
-    public void AddressEkleme(){
-
+    public void setAddressArrayList(ArrayList<Address> addressArrayList) {
+        this.addressArrayList = addressArrayList;
     }
 
+    //public abstract void loginFunction();
 
-
-
-    public void AddressCikarma(){
-
+    public void addressEkleme(Address address) {
+        addressArrayList.add(address);
     }
 
+    public void addressCikarma(Address address) {
+        addressArrayList.remove(address);
+    }
 
-    public abstract void SigortaPolicesiEkleme();//Individual ve Enterprise isimli alt sınıflarda override edilecek
+    public abstract void SigortaPolicesiEkleme();
 
     private final void showUserInfo() {
         System.out.println("Kullanıcı Bilgileri:");
@@ -102,123 +85,5 @@ public abstract class Account {
             System.out.println("İş Adresi:");
             System.out.println(businessAddress.getAddressInfo());
         }
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-}
-class User {
-    private String isim;
-    private String soyisim;
-
-    private String email;
-    private String sifre;
-    private String meslek;
-    private int yas;
-    private ArrayList<Address> addressArrayList;
-    private ArrayList<HomeAddress> homeAddressArrayList;
-    private ArrayList<BusinessAddress> businessAddressArrayList;
-    private Date lastLogin;
-
-    public User(String isim, String soyisim, String email, String sifre, String meslek, int yas, ArrayList<Address> addressArrayList,ArrayList<HomeAddress> homeAddressArrayList,ArrayList<BusinessAddress> businessAddressArrayList, Date lastLogin) {
-        this.isim = isim;
-        this.soyisim = soyisim;
-        this.email = email;
-        this.sifre = sifre;
-        this.meslek = meslek;
-        this.yas = yas;
-        this.addressArrayList = addressArrayList;
-        this.homeAddressArrayList = homeAddressArrayList;
-        this.businessAddressArrayList = businessAddressArrayList;
-        this.lastLogin = lastLogin;
-    }
-
-    public String getIsim() {
-        return isim;
-    }
-
-    public void setIsim(String isim) {
-        this.isim = isim;
-    }
-
-    public String getSoyisim() {
-        return soyisim;
-    }
-
-    public void setSoyisim(String soyisim) {
-        this.soyisim = soyisim;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getSifre() {
-        return sifre;
-    }
-
-    public void setSifre(String sifre) {
-        this.sifre = sifre;
-    }
-
-    public String getMeslek() {
-        return meslek;
-    }
-
-    public void setMeslek(String meslek) {
-        this.meslek = meslek;
-    }
-
-    public int getYas() {
-        return yas;
-    }
-
-    public void setYas(int yas) {
-        this.yas = yas;
-    }
-
-    public ArrayList<Address> getAddressArrayList() {
-        return addressArrayList;
-    }
-
-    public void setAddressArrayList(ArrayList<Address> addressArrayList) {
-        this.addressArrayList = addressArrayList;
-    }
-
-    public ArrayList<HomeAddress> getHomeAddressArrayList() {
-        return homeAddressArrayList;
-    }
-
-    public void setHomeAddressArrayList(ArrayList<HomeAddress> homeAddressArrayList) {
-        this.homeAddressArrayList = homeAddressArrayList;
-    }
-
-    public ArrayList<BusinessAddress> getBusinessAddressArrayList() {
-        return businessAddressArrayList;
-    }
-
-    public void setBusinessAddressArrayList(ArrayList<BusinessAddress> businessAddressArrayList) {
-        this.businessAddressArrayList = businessAddressArrayList;
-    }
-
-    public Date getLastLogin() {
-        return lastLogin;
-    }
-
-    public void setLastLogin(Date lastLogin) {
-        this.lastLogin = lastLogin;
     }
 }

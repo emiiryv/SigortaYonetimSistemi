@@ -1,41 +1,29 @@
 import java.util.HashMap;
-import java.util.TreeSet;
 
 public class AccountManager {
-    private TreeSet<Individual> individualTreeSet;
-    private TreeSet<Enterprise> enterpriseTreeSet;
-    private HashMap<String,String> userCredentials;//Anahtar: email, Değer: şifre
-    private String email;
-    private String sifre;
-    public AccountManager(){
-        userCredentials = new HashMap<>();
+    private HashMap<String, Account> accounts; // Anahtar: email, Değer: Account
+
+    public AccountManager() {
+        accounts = new HashMap<>();
     }
 
-    public void login(String email, String sifre) throws InvalidAuthenticationException {
-        String storedPassword = userCredentials.get(email);
-        if (storedPassword != null && storedPassword.equals(sifre)) {
-            // Giriş başarılı ise bir şey yapmaya gerek yok, sadece işlemi tamamlayabiliriz
+    public void addUser(Account account) {
+        // HashMap'e kullanıcıyı ekle
+        accounts.put(account.getUser().getEmail(), account);
+    }
+
+    public Account login(String email, String password) throws InvalidAuthenticationException {
+        Account account = accounts.get(email); // HashMap'ten hesabı al
+
+        if (account != null && account.getUser().getSifre().equals(password)) {
+            // Eğer hesap bulunursa ve şifre doğruysa, giriş başarılı olur
+            System.out.println("Giriş Başarılı!");
+            return account;
         } else {
+            // Eğer hesap bulunamazsa veya şifre yanlışsa hata fırlat
             throw new InvalidAuthenticationException("Geçersiz kullanıcı bilgileri");
         }
-
-
-
-        /*
-     Bu fonksiyon dışarıdan verilen email ve şifre bilgisini alıp
-     Account listesi üzerinde dolaşıp uygun bir giriş işlemi bulursa
-     Account nesnesini çağrıldığı yere dönecektir
-     Bu fonksiyon Account nesnesi üzerindeki
-     "login" olma fonksiyonunu çağıracaktır.
-     Unutmayın bu fonksiyon "InvalidAuthenticationException"
-     tipinde hata fırlatabiliyordu.
-     Bu nedenle burada try-catch mekanizması kurmayı unutmayınız.
-
-         */
     }
-
-
-
 
 
 }
