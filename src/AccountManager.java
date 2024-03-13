@@ -24,6 +24,4 @@ public class AccountManager {
             throw new InvalidAuthenticationException("Geçersiz kullanıcı bilgileri");
         }
     }
-
-
 }
