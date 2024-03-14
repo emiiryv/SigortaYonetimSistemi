@@ -10,8 +10,9 @@ public class Panel {
         this.addressManager = addressManager;
         this.accountManager = accountManager;
     }
-
+    //account type ayarla
     public void start() {
+
         while (true) {
             System.out.println("Sigorta Yönetim Sistemi'ne Hoşgeldiniz!");
             System.out.println("#######################################");
