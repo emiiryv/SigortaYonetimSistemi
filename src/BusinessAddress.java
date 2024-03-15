@@ -1,19 +1,21 @@
 public class BusinessAddress implements Address {
-    private String street;
-    private String city;
-    private String zipCode;
-    private String country;
+    private String isMahalle;
+    private String isSokak;
+    private String isApartman;
+    private String isKapiNo;
+    private String isililce;
 
-    public BusinessAddress(String street, String city, String zipCode, String country) {
-        this.street = street;
-        this.city = city;
-        this.zipCode = zipCode;
-        this.country = country;
+    public BusinessAddress(String isMahalle, String isSokak, String isApartman, String isKapiNo, String isililce) {
+        this.isMahalle = isMahalle;
+        this.isSokak = isSokak;
+        this.isApartman = isApartman;
+        this.isKapiNo = isKapiNo;
+        this.isililce = isililce;
     }
 
     // Adres bilgisini döndüren metot
     @Override
     public String getAddressInfo() {
-        return street + ", " + city + ", " + zipCode + ", " + country;
+        return isMahalle + " Mahallesi, " + isSokak + " Sokak, " + isApartman + " Apartmanı, Kapı No: " + isKapiNo + " , " + isililce;
     }
 }

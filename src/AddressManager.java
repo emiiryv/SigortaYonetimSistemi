@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+
 public class AddressManager {
     private ArrayList<Address> addressArrayList;
     private ArrayList<HomeAddress> homeAddressArrayList;
@@ -10,22 +11,31 @@ public class AddressManager {
         this.businessAddressArrayList = businessAddressArrayList;
     }
 
-    public static void addAddress(User user, Address address){
-        user.getAddressArrayList().add(address);
+    public ArrayList<Address> getAddressArrayList() {
+        return addressArrayList;
     }
-    public static void removeAddress(User user, Address address){
-        user.getAddressArrayList().remove(address);
+
+    public void addAddress(Address address) {
+        addressArrayList.add(address);
     }
-    public static void addHomeAddress(User user,HomeAddress homeAddress){
-        user.getHomeAddressArrayList().add(homeAddress);
+
+    public void removeAddress(Address address) {
+        addressArrayList.remove(address);
     }
-    public static void removeHomeAddress(User user,HomeAddress homeAddress){
-        user.getAddressArrayList().remove(homeAddress);
+
+    public void addHomeAddress(HomeAddress homeAddress) {
+        homeAddressArrayList.add(homeAddress);
     }
-    public static void addBusinessAddress(User user,BusinessAddress businessAddress){
-        user.getBusinessAddressArrayList().add(businessAddress);
+
+    public void removeHomeAddress(HomeAddress homeAddress) {
+        homeAddressArrayList.remove(homeAddress);
     }
-    public static void removeBusinessAddress(User user,BusinessAddress businessAddress){
-        user.getBusinessAddressArrayList().remove(businessAddress);
+
+    public void addBusinessAddress(BusinessAddress businessAddress) {
+        businessAddressArrayList.add(businessAddress);
+    }
+
+    public void removeBusinessAddress(BusinessAddress businessAddress) {
+        businessAddressArrayList.remove(businessAddress);
     }
 }

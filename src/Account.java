@@ -61,7 +61,8 @@ public abstract class Account {
 
     public abstract void SigortaPolicesiEkleme();
 
-    private final void showUserInfo() {
+    public final void showUserInfo(AddressManager addressManager) {
+        System.out.println("#######################################");
         System.out.println("Kullanıcı Bilgileri:");
         System.out.println("Isim: " + user.getIsim());
         System.out.println("Soyisim: " + user.getSoyisim());
@@ -72,18 +73,14 @@ public abstract class Account {
         System.out.println("Giriş Durumu: " + authenticationStatus);
         System.out.println("Adresler: ");
 
-        // Ev Adresleri
-        ArrayList<HomeAddress> homeAddresses = user.getHomeAddressArrayList();
-        for (HomeAddress homeAddress : homeAddresses) {
-            System.out.println("Ev Adresi:");
-            System.out.println(homeAddress.getAddressInfo());
+        // Adresler
+        ArrayList<Address> userAddresses = addressManager.getAddressArrayList();
+        for (Address address : userAddresses) {
+            System.out.println(address.getAddressInfo());
         }
 
-        // İş Adresleri
-        ArrayList<BusinessAddress> businessAddresses = user.getBusinessAddressArrayList();
-        for (BusinessAddress businessAddress : businessAddresses) {
-            System.out.println("İş Adresi:");
-            System.out.println(businessAddress.getAddressInfo());
-        }
+        System.out.println("#######################################");
     }
+
+
 }
