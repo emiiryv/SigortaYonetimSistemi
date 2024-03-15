@@ -41,19 +41,41 @@ public class Panel {
     private void girisYap() {
         Scanner input = new Scanner(System.in);
         System.out.println("#######################################");
-        System.out.print("Lütfen eposta adresinizi giriniz:");
-        String email = input.next();
-        System.out.print("Lütfen şifrenizi giriniz:");
-        String sifre = input.next();
+        System.out.print("Hangi türde hesaba giriş yapmak istersiniz? (1-Bireysel, 2-Kurumsal): ");
+        int hesapTuruSecim = input.nextInt();
+        input.nextLine(); // Buffer temizleme
 
-        try {
-            accountManager.login(email, sifre);
-            System.out.println("Giriş Başarılı!");
-            // Giriş başarılıysa gerekli işlemler buraya yazılabilir
-        } catch (InvalidAuthenticationException e) {
-            System.out.println("Hata: " + e.getMessage());
+        switch (hesapTuruSecim) {
+            case 1:
+                System.out.print("Bireysel hesap için eposta adresinizi giriniz: ");
+                String bireyselEmail = input.nextLine();
+                System.out.print("Şifrenizi giriniz: ");
+                String bireyselSifre = input.nextLine();
+                try {
+                    accountManager.login(bireyselEmail, bireyselSifre);
+                    System.out.println("Bireysel hesaba giriş başarılı!");
+                } catch (InvalidAuthenticationException e) {
+                    System.out.println("Bireysel hesaba giriş yapılamadı: " + e.getMessage());
+                }
+                break;
+            case 2:
+                System.out.print("Kurumsal hesap için eposta adresinizi giriniz: ");
+                String kurumsalEmail = input.nextLine();
+                System.out.print("Şifrenizi giriniz: ");
+                String kurumsalSifre = input.nextLine();
+                try {
+                    accountManager.login(kurumsalEmail, kurumsalSifre);
+                    System.out.println("Kurumsal hesaba giriş başarılı!");
+                } catch (InvalidAuthenticationException e) {
+                    System.out.println("Kurumsal hesaba giriş yapılamadı: " + e.getMessage());
+                }
+                break;
+            default:
+                System.out.println("Hatalı bir seçim yaptınız.");
+                break;
         }
     }
+
 
     private void hesapOlustur() {
         Scanner input = new Scanner(System.in);
