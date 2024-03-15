@@ -29,6 +29,13 @@ public class Main {
         Individual individual2 = new Individual(AuthenticationStatus.SUCCESS, user2, new ArrayList<>(), new ArrayList<>());
         accountManager.addUser(individual2);
 
+        // Kullanıcı 3
+        User user3 = new User("Burak", "Kerk", "burak@mail.com", "burak123", "Öğretmen", 25, addressArrayList, homeAddressArrayList, businessAddressArrayList, new Date());
+        Enterprise enterprise1 = new Enterprise(AuthenticationStatus.SUCCESS, user3, new ArrayList<>(), new ArrayList<>());
+        accountManager.addUser(enterprise1);
+
+
+
         // Diğer önceden tanımlı kullanıcılar
         // ...
     }
